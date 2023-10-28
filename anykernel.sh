@@ -4,7 +4,7 @@
 ### AnyKernel setup
 # global properties
 properties() { '
-kernel.string=e+ kernel by dereference
+kernel.string=Paimon Kernel By Taki/Amrito
 do.devicecheck=1
 device.name1=veux
 device.name2=peux
