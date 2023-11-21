@@ -11,6 +11,11 @@ device.name2=peux
 do.cleanup=1
 '; } # end properties
 
+override_cmdline() {
+local cmdline='androidboot.hardware=qcom lpm_levels.sleep_disabled=1 service_locator.enable=1 androidboot.usbcontroller=4e00000.dwc3 swiotlb=noforce loop.max_part=7 iptable_raw.raw_before_defrag=1 ip6table_raw.raw_before_defrag=1 firmware_class.path=/vendor/firmware buildvariant=user'
+sed -i '/^cmdline/d' $split_img/header;
+echo cmdline=$cmdline >> $split_img/header;
+}
 
 ### AnyKernel install
 # boot shell variables
@@ -35,6 +40,7 @@ reset_ak;
 
 # vendor_boot install
 split_boot;
+override_cmdline;
 flash_boot;
 ## end vendor_boot install
 
